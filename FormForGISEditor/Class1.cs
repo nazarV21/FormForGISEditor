@@ -1,24 +1,12 @@
 using SGP.Gis;
 using SGP.Gis.Attributes;
 using SGP.Gis.Carto.Layers;
-using SGP.Gis.Catalog;
 using SGP.Gis.Commands;
 using SGP.Gis.Controls;
 using SGP.Gis.Features;
-using SGP.Gis.Geometry;
-using SGP.Gis.IO;
-using System;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Data;
-using SGP.Gis.Filters;
-using System.ComponentModel.Design;
-using System.Reflection;
 
 namespace FormForGISEditor
 {
