@@ -1,4 +1,4 @@
-using SGP.Gis;
+п»їusing SGP.Gis;
 using SGP.Gis.Attributes;
 using SGP.Gis.Carto.Layers;
 using SGP.Gis.Commands;
@@ -16,9 +16,9 @@ namespace FormForGISEditor
 
     public class SampleSelectLayerButton : ButtonCommandInfo
     {
-        public SampleSelectLayerButton() : base("Практика", "Форма", "Статистика площадей", SGP.Gis.Resources.Icons.IconType.Run)
+        public SampleSelectLayerButton() : base("РџСЂР°РєС‚РёРєР°", "Р¤РѕСЂРјР°", "РЎС‚Р°С‚РёСЃС‚РёРєР° РїР»РѕС‰Р°РґРµР№", SGP.Gis.Resources.Icons.IconType.Run)
         {
-            ToolTip = "Форма для отображения статистики площадей объектов";
+            ToolTip = "Р¤РѕСЂРјР° РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё РїР»РѕС‰Р°РґРµР№ РѕР±СЉРµРєС‚РѕРІ";
             IsEnabled = true;
             IsVisible = true;
         }
@@ -27,7 +27,7 @@ namespace FormForGISEditor
         {
             base.Execute(parameter);
 
-            //Контейнер карты
+            //РљРѕРЅС‚РµР№РЅРµСЂ РєР°СЂС‚С‹
             var mapControl = Application.Context.Resolve<IMapControl>();
 
             var layersModel = new SampleLayersWindowModel
@@ -37,22 +37,22 @@ namespace FormForGISEditor
 
             var result = Application.WindowManager.ShowWindow(new WindowParameters
             {
-                //генератор содержимого окна по модели
+                //РіРµРЅРµСЂР°С‚РѕСЂ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РѕРєРЅР° РїРѕ РјРѕРґРµР»Рё
                 Content = new ObjectControlGenerated
                 {
-                    //Отступы
+                    //РћС‚СЃС‚СѓРїС‹
                     Margin = new Thickness(30),
-                    //модель содержимого окна
+                    //РјРѕРґРµР»СЊ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РѕРєРЅР°
                     SelectedObject = layersModel
                 },
                 Width = 700,
                 Height = 600,
-                Title = "Статистика площадей"
+                Title = "РЎС‚Р°С‚РёСЃС‚РёРєР° РїР»РѕС‰Р°РґРµР№"
             });
         }
     }
 
-    //возможность выбора слоя
+    //РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІС‹Р±РѕСЂР° СЃР»РѕСЏ
     public class SampleLayersWindowModel
     {
         public IField FieldList { get; set; }
@@ -68,34 +68,34 @@ namespace FormForGISEditor
         }
 
         [Browsable(true)]
-        [DisplayName("Выберете слой из списка:")]
+        [DisplayName("Р’С‹Р±РµСЂРµС‚Рµ СЃР»РѕР№ РёР· СЃРїРёСЃРєР°:")]
         [ItemsSourceBinding(nameof(LayerList), DisplayMember = "Name")]
         public ILayer SelectedLayer { get; set; }
 
         [Browsable(true)]
         [DisplayName("")]
         [ReadOnly(true)]
-        public string TextReadOnly { get; } = "Укажите поле для группировки объектов";
+        public string TextReadOnly { get; } = "РЈРєР°Р¶РёС‚Рµ РїРѕР»Рµ РґР»СЏ РіСЂСѓРїРїРёСЂРѕРІРєРё РѕР±СЉРµРєС‚РѕРІ";
 
         [Browsable(true)]
-        [DisplayName("Выберите поле 1:")]
+        [DisplayName("Р’С‹Р±РµСЂРёС‚Рµ РїРѕР»Рµ 1:")]
         [ItemsSourceBinding(nameof(FieldList), DisplayMember = "Name")]
         public IField SelectedField1 { get; set; }
 
         [Browsable(true)]
-        [DisplayName("Выберите поле 2:")]
+        [DisplayName("Р’С‹Р±РµСЂРёС‚Рµ РїРѕР»Рµ 2:")]
         [ItemsSourceBinding(nameof(FieldList), DisplayMember = "Name")]
         public IField SelectedField2 { get; set; }
 
         [Browsable(true)]
-        [DisplayName("Расчитать")]
+        [DisplayName("Р Р°СЃС‡РёС‚Р°С‚СЊ")]
         public IButton ActionButton { get; set; }
 
 
 
         /*[Browsable(true)]
-        [DisplayName("Таблица")]
-        [Field(nameof(StatisticsTable), Name = "Поля")]
+        [DisplayName("РўР°Р±Р»РёС†Р°")]
+        [Field(nameof(StatisticsTable), Name = "РџРѕР»СЏ")]
         public DataTable StatisticsTable
             {
                 get
@@ -149,20 +149,20 @@ namespace FormForGISEditor
             featureCursor.Close();
 
             var dataTable = new DataTable();
-            dataTable.Columns.Add("Поле 1", typeof(string));
-            dataTable.Columns.Add("Поле 2", typeof(string));
-            dataTable.Columns.Add("Минимальная площадь", typeof(double));
-            dataTable.Columns.Add("Максимальная площадь", typeof(double));
-            dataTable.Columns.Add("Суммарная площадь", typeof(double));
+            dataTable.Columns.Add("РџРѕР»Рµ 1", typeof(string));
+            dataTable.Columns.Add("РџРѕР»Рµ 2", typeof(string));
+            dataTable.Columns.Add("РњРёРЅРёРјР°Р»СЊРЅР°СЏ РїР»РѕС‰Р°РґСЊ", typeof(double));
+            dataTable.Columns.Add("РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РїР»РѕС‰Р°РґСЊ", typeof(double));
+            dataTable.Columns.Add("РЎСѓРјРјР°СЂРЅР°СЏ РїР»РѕС‰Р°РґСЊ", typeof(double));
 
             foreach (var group in statistics)
             {
                 var row = dataTable.NewRow();
-                row["Поле 1"] = group.Key;
-                row["Поле 2"] = group.Key;
-                row["Минимальная площадь"] = group.Value.Min();
-                row["Максимальная площадь"] = group.Value.Max();
-                row["Суммарная площадь"] = group.Value.Sum();
+                row["РџРѕР»Рµ 1"] = group.Key;
+                row["РџРѕР»Рµ 2"] = group.Key;
+                row["РњРёРЅРёРјР°Р»СЊРЅР°СЏ РїР»РѕС‰Р°РґСЊ"] = group.Value.Min();
+                row["РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РїР»РѕС‰Р°РґСЊ"] = group.Value.Max();
+                row["РЎСѓРјРјР°СЂРЅР°СЏ РїР»РѕС‰Р°РґСЊ"] = group.Value.Sum();
                 dataTable.Rows.Add(row);
             }
 
