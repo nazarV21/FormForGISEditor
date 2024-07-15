@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "FormForGISEditor": {
+      "commandName": "Project"
+    },
+    "Профиль 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\itstud\\AppData\\Local\\NashaGIS Editor\\MapApplication.exe",
+      "commandLineArgs": ".\\Sample.dll"
+    }
+  }
+}
