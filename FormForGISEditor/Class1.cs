@@ -4,9 +4,9 @@ using SGP.Gis.Carto.Layers;
 using SGP.Gis.Commands;
 using SGP.Gis.Controls;
 using SGP.Gis.Features;
+using SGP.Gis.Fonts;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.Windows;
 
 namespace FormForGISEditor
 {
@@ -41,7 +41,7 @@ namespace FormForGISEditor
                 Content = new ObjectControlGenerated
                 {
                     //Отступы
-                    Margin = new Thickness(30),
+                    Margin = new System.Windows.Thickness(30),
                     //модель содержимого окна
                     SelectedObject = layersModel
                 },
@@ -66,16 +66,19 @@ namespace FormForGISEditor
                                   .ToArray();
             }
         }
+        
 
         [Browsable(true)]
         [DisplayName("Выберете слой из списка:")]
         [ItemsSourceBinding(nameof(LayerList), DisplayMember = "Name")]
         public ILayer SelectedLayer { get; set; }
 
+        
+        
         [Browsable(true)]
         [DisplayName("")]
         [ReadOnly(true)]
-        public string TextReadOnly { get; } = "Укажите поле для группировки объектов";
+        public string TextReadOnly { get; } = "Укажите поле для группировки объектов"; 
 
         [Browsable(true)]
         [DisplayName("Выберите поле 1:")]
