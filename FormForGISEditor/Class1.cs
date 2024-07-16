@@ -67,8 +67,6 @@ namespace FormForGISEditor
         [DisplayName("Выберете слой из списка:")]
         [ItemsSourceBinding(nameof(LayerList), DisplayMember = "Name")]
         public ILayer SelectedLayer { get; set; }
-
-        
         
         [Browsable(true)]
         [DisplayName("")]
