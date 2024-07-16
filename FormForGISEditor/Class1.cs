@@ -27,7 +27,6 @@ namespace FormForGISEditor
         {
             base.Execute(parameter);
 
-            //Контейнер карты
             var mapControl = Application.Context.Resolve<IMapControl>();
 
             var layersModel = new SampleLayersWindowModel
@@ -37,12 +36,9 @@ namespace FormForGISEditor
 
             var result = Application.WindowManager.ShowWindow(new WindowParameters
             {
-                //генератор содержимого окна по модели
                 Content = new ObjectControlGenerated
                 {
-                    //Отступы
                     Margin = new System.Windows.Thickness(30),
-                    //модель содержимого окна
                     SelectedObject = layersModel
                 },
                 Width = 700,
@@ -52,7 +48,6 @@ namespace FormForGISEditor
         }
     }
 
-    //возможность выбора слоя
     public class SampleLayersWindowModel
     {
         public IField FieldList { get; set; }
@@ -98,7 +93,7 @@ namespace FormForGISEditor
 
         /*[Browsable(true)]
         [DisplayName("Таблица")]
-        [Field(nameof(StatisticsTable), Name = "Поля")]
+        [Fields(nameof(StatisticsTable), Name = "Поля")]
         public DataTable StatisticsTable
             {
                 get
